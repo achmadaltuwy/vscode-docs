@@ -1,0 +1,55 @@
+import pygame
+import sys
+
+# Inisialisasi Pygame
+pygame.init()
+
+# Ukuran layar
+screen_width = 800
+screen_height = 400
+
+# Warna
+white = (255, 255, 255)
+
+# Inisialisasi layar
+screen = pygame.display.set_mode((screen_width, screen_height))
+pygame.display.set_caption("Animasi Nama Zidan Bahlega")
+
+# Font dan teks
+font = pygame.font.Font(None, 36)
+text = font.render("Zidan Bahlega", True, (0, 0, 0))
+
+# Koordinat awal teks
+x = 0
+y = (screen_height - text.get_height()) // 2
+
+# Kecepatan pergerakan teks
+velocity = 2
+
+# Loop utama
+running = True
+while running:
+    for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                        running = False
+
+                            # Hapus layar
+                                screen.fill(white)
+
+                                    # Gambar teks
+                                        screen.blit(text, (x, y))
+
+                                            # Update posisi teks
+                                                x += velocity
+
+                                                    # Jika teks mencapai batas layar, balik arahnya
+                                                        if x > screen_width - text.get_width() or x < 0:
+                                                                velocity = -velocity
+
+                                                                    # Update tampilan
+                                                                        pygame.display.update()
+
+                                                                        # Keluar dari Pygame
+                                                                        pygame.quit()
+                                                                        sys.exit()
+                                                                        
